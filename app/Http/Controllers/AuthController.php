@@ -61,7 +61,7 @@ class AuthController extends Controller // <-- Ini sekarang sudah benar
 
         // 2. Coba Autentikasi dan buat token
         // Ini adalah inti dari materi PDF 09
-        if (!$token = JWTAuth::attempt($credentials)) {
+        if (!$token = auth()->attempt($credentials)) {
             // 3. ERROR HANDLING jika email/password salah
             // Sesuai materi PDF 06, kirim error 401 Unauthorized
             return response()->json(['error' => 'Kredensial tidak valid (Unauthorized)'], 401);
