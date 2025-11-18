@@ -14,20 +14,14 @@ class UserController extends Controller // <-- project-api-kelompokIni sudah ben
      * Materi: CRUD (Read), Format JSON
      * =============================================
      */
-    public function index(Request $request)
+    
+    public function index()
     {
-    // Security RBAC - Cek apakah user adalah ADMIN
-    if ($request->user()->role !== 'admin') {
-        return response()->json([
-            'message' => 'Forbidden: Admin only.'
-        ], 403);
-    }
+        // Ambil semua user
+        $users = User::all();
 
-    // Ambil semua user
-    $users = User::all();
-
-    // Response JSON
-    return response()->json($users, 200);
+        // Kembalikan dalam format JSON
+        return response()->json($users, 200);
     }
 
 }
